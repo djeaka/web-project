@@ -1,0 +1,17 @@
+- hosts: lb
+  tasks:
+  - name: Install haproxy package
+    ansible.builtin.package:
+        name: haproxy
+        state: present
+
+  - name: update configuration for haproxy
+    ansible.builtin.template:
+        src: templates/haproxy.cfg.j2
+        dest: /etc/haproxy/haproxy.cfg
+
+  - name: start haproxy service
+    ansible.builtin.service:
+        name: haproxy
+        state: started
+        enabled: yes
