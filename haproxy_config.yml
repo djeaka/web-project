@@ -1,4 +1,4 @@
-- hosts: lb
+- hosts: all
   tasks:
   - name: Install haproxy package
     ansible.builtin.package:
